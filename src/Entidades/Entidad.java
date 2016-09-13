@@ -1,10 +1,7 @@
 package Entidades;
 
-import Entidades.ManejadorEntidades;
-import Mundos.Mundo;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.ArrayList;
 import pokemonj.Manejador;
 
 public abstract class Entidad {
