@@ -26,7 +26,7 @@ public abstract class Entidad {
 
     public abstract void tick();
 
-    public abstract void render(Graphics var1);
+    public abstract void render(Graphics g);
 
     public boolean checkColision(float xDesfase, float yDesfase) {
         for (Entidad e : this.handler.getMundo().getManejadorEntidades().getEntidades()) {

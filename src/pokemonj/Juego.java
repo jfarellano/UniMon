@@ -7,11 +7,8 @@ import Input.ManejadorMouse;
 import Input.ManejadorTeclas;
 import gfx.Assets;
 import gfx.CamaraJuego;
-import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.io.PrintStream;
-import javax.swing.JFrame;
 
 public class Juego
   implements Runnable
@@ -59,6 +56,7 @@ public class Juego
     this.manejadorMouse = new ManejadorMouse();
   }
   
+  @Override
   public void run()
   {
     init();

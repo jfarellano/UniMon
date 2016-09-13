@@ -1,23 +1,34 @@
 package Estados;
 
-import Estados.State;
-import Input.ManejadorTeclas;
+import gfx.Assets;
 import gfx.CargarImgs;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import pokemonj.Juego;
 import pokemonj.Manejador;
+import pokemonj.UI.Button;
+import pokemonj.UI.ClickListener;
+import pokemonj.UI.UIMananger;
 
-public class MainMenu
-extends State {
+public class MainMenu extends State {
+    
+    private UIMananger uiMananger;
+
     private final BufferedImage fondo;
     private String ruta;
 
     public MainMenu(Manejador handler, String ruta) {
         super(handler);
-        this.fondo = CargarImgs.cargarImagen((String)ruta);
+        uiMananger = new UIMananger(handler);
+        handler.getManejadorMouse().setUIMananger(uiMananger);
+        this.fondo = CargarImgs.cargarImagen((String) ruta);
+        
+        uiMananger.addObject(new Button(200, 200, 64, 32, Assets.Button, new ClickListener(){
+            @Override
+            public void onClick() {
+                handler.getManejadorMouse().setUIMananger(null);
+                State.setState(handler.getGame().getGameState());
+            }
+        }));
     }
 
     @Override
@@ -25,10 +36,13 @@ extends State {
         if (this.handler.getManejadorTeclas().space) {
             State.setState(this.handler.getGame().getGameState());
         }
+        uiMananger.tick();
     }
 
     @Override
     public void render(Graphics g) {
         g.drawImage(this.fondo, 0, 0, null);
+        uiMananger.render(g);
     }
 }
+//Ojo aca esta como se implementa un boton en cualquier estado.
