@@ -10,8 +10,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.ImageObserver;
 import pokemonj.Manejador;
 
-public class Tree
-extends Estatica {
+public class Tree extends Estatica {
     public Tree(Manejador handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         this.limites.x = 10;
