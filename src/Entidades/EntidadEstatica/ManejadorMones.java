@@ -2,8 +2,10 @@ package Entidades.EntidadEstatica;
 
 import Entidades.Entidad;
 import Utilidad.Utilidad;
+import gfx.Assets;
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ManejadorMones {
 
@@ -16,36 +18,24 @@ public class ManejadorMones {
     }
     
     public void cargarArchivoMones(){
+        mones = new ArrayList<>();
         String file = Utilidad.loadFileAsString("res/Mon/monBase.txt");
         String[] separados = file.split("\\s+");
-        System.out.println(separados[0]+ " " +separados[1]);
         cantMon = Utilidad.parseInt(separados[0]);
-        int j = 1;
-        System.out.println(cantMon);
-        /*
+        archivoMones = new String[cantMon][4];
+        int pos = 1;
         for(int i = 0; i < cantMon; i++){
-            j=0;
-            archivoMones[i][j] = separados[i + j * 4 + 1];
-            j++;
-            archivoMones[i][j] = separados[i + j * 4 + 1];
-            j++;
-            archivoMones[i][j] = separados[i + j * 4 + 1];
-            j++;
-            archivoMones[i][j] = separados[i + j * 4 + 1];
+            for(int j = 0; j < 4; j++){
+                archivoMones[i][j] = separados[pos];
+                pos++;
+            }
         }
-        */
-        archivoMones[0][0] = separados[j];
-        j++;
-        archivoMones[0][1] = separados[j];
-        j++;
-        archivoMones[0][2] = separados[j];
-        j++;
-        archivoMones[0][3] = separados[j];
-        j++;
     }
     
     public void render(Graphics g){
-        System.out.println(archivoMones[0][0] + archivoMones[0][1] + archivoMones[0][2] + archivoMones[0][3]);
+        for (Mon m : mones) {
+            g.drawImage(m.text, (int)(m.getX() - m.getHandler().getCamaraJuego().getxDesfase()), (int)(m.getY() - m.getHandler().getCamaraJuego().getyDesfase()), m.getWidth(), m.getHeight(), null);
+        }
     }
 
     public String[][] getArchivoMones() {

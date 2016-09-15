@@ -20,6 +20,7 @@ public class Mundo {
     private int height;
     private int spwX;
     private int spwY;
+    private int veces = 0;
     private int[][] tiles;
     private final Manejador handler;
     private ManejadorEntidades manejadorEntidades;
@@ -39,6 +40,7 @@ public class Mundo {
 
         cargarMundo(ruta);
         manejadorMones.cargarArchivoMones();
+        RandomSpawn();
         this.manejadorEntidades.getPlayer().setX(this.spwX);
         this.manejadorEntidades.getPlayer().setY(this.spwY);
     }
@@ -47,8 +49,8 @@ public class Mundo {
         Random rand = new Random();
         int n;
         n = rand.nextInt(manejadorMones.getCantMon());
-        float randWidth = rand.nextInt(width); 
-        float randHeight = rand.nextInt(height);
+        float randWidth = rand.nextInt(width) * 32; 
+        float randHeight = rand.nextInt(height) * 32;
         Mon mon = new Mon(n, Utilidad.parseInt(manejadorMones.getArchivoMones()[n][1]), Utilidad.parseInt(manejadorMones.getArchivoMones()[n][2]), manejadorMones.getArchivoMones()[n][3], Assets.mones[n], handler, randWidth, randHeight);
         return mon;
     }
@@ -63,6 +65,11 @@ public class Mundo {
 
     public void tick() {
         this.manejadorEntidades.tick();
+        if (veces == 30*60){
+            RandomSpawn();
+            veces = 0;
+        }
+        veces ++;
     }
 
     public void render(Graphics g) {

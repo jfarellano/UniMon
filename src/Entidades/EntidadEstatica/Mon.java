@@ -29,4 +29,10 @@ public class Mon extends Estatica {
     public void render(Graphics g) {
         g.drawImage(Assets.mones[id], (int)(this.x - this.handler.getCamaraJuego().getxDesfase()), (int)(this.y - this.handler.getCamaraJuego().getyDesfase()), this.width, this.height, null);
     }
+
+    public Manejador getHandler() {
+        return handler;
+    }
+    
+    
 }
