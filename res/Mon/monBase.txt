@@ -1,0 +1,6 @@
+5
+0 60 10 Gatoto
+1 80 15 Iwanna
+2 30 50 Smokee
+3 120 8 Slooow
+4 90 20 Gard

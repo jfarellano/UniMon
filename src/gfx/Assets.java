@@ -17,6 +17,7 @@ public class Assets
   public static BufferedImage[] Turpial_Up;
   public static BufferedImage[] Turpial_Dw;
   public static BufferedImage[] Button;
+  public static BufferedImage[] mones;
   
   public static void init()
   {
@@ -26,6 +27,13 @@ public class Assets
     Turpial_Up = new BufferedImage[3];
     Turpial_Dw = new BufferedImage[3];
     Button = new BufferedImage[2];
+    mones = new BufferedImage[7];
+    
+    mones[0] = sheet.crop(WIDTH * 2, HEIGHT * 2, WIDTH, HEIGHT);
+    mones[1] = sheet.crop(WIDTH * 3, HEIGHT * 2, WIDTH, HEIGHT);
+    mones[2] = sheet.crop(WIDTH * 4, HEIGHT * 2, WIDTH, HEIGHT);
+    mones[3] = sheet.crop(WIDTH * 5, HEIGHT * 2, WIDTH, HEIGHT);
+    mones[4] = sheet.crop(WIDTH * 6, HEIGHT * 2, WIDTH, HEIGHT);
     
     Turpial_Der[0] = sheet.crop(0, 0, 32, 32);
     Turpial_Der[1] = sheet.crop(32, 0, 32, 32);

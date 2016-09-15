@@ -1,13 +1,7 @@
 package Entidades.EntidadEstatica;
 
-import Entidades.EntidadEstatica.Estatica;
 import gfx.Assets;
-import gfx.CamaraJuego;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import pokemonj.Manejador;
 
 public class Tree extends Estatica {
@@ -24,6 +18,5 @@ public class Tree extends Estatica {
 
     public void render(Graphics g) {
         g.drawImage(Assets.Tree, (int)(this.x - this.handler.getCamaraJuego().getxDesfase()), (int)(this.y - this.handler.getCamaraJuego().getyDesfase()), this.width, this.height, null);
-        g.drawRect((int)(this.x - this.handler.getCamaraJuego().getxDesfase()) + this.limites.x, (int)(this.y - this.handler.getCamaraJuego().getyDesfase()) + this.limites.y, this.limites.width, this.limites.height);
     }
 }

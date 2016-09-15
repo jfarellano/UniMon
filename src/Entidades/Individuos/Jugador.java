@@ -1,17 +1,10 @@
 package Entidades.Individuos;
 
 import Entidades.Entidad;
-import Entidades.Individuos.Individuo;
-import Input.ManejadorTeclas;
 import gfx.Animacion;
 import gfx.Assets;
-import gfx.CamaraJuego;
 import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import pokemonj.Juego;
 import pokemonj.Manejador;
 
 public class Jugador

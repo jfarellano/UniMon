@@ -1,6 +1,5 @@
 package Entidades;
 
-import Entidades.Entidad;
 import Entidades.Individuos.Jugador;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -11,6 +10,7 @@ public final class ManejadorEntidades {
     private Manejador handler;
     private Jugador player;
     private ArrayList<Entidad> entidades;
+    private int contador = 0;
     private final Comparator<Entidad> ordenRender = (a, b) -> {
         if (a.getY() + (float)a.getHeight() < b.getY() + (float)b.getHeight()) {
             return -1;
@@ -26,6 +26,8 @@ public final class ManejadorEntidades {
     }
 
     public void tick() {
+        contador++;
+        if(contador == 30*60)handler.getMundo().RandomSpawn();
         for (int i = 0; i < this.entidades.size(); ++i) {
             Entidad e = this.entidades.get(i);
             e.tick();

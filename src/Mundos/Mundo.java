@@ -1,15 +1,18 @@
 package Mundos;
 
+import Entidades.EntidadEstatica.ManejadorMones;
 import Entidades.EntidadEstatica.Mon;
 import Entidades.EntidadEstatica.Tree;
 import Entidades.Individuos.Jugador;
 import Entidades.ManejadorEntidades;
 import Utilidad.Utilidad;
+import gfx.Assets;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 import pokemonj.Manejador;
 import pokemonj.Tile.Tile;
+import Entidades.EntidadEstatica.ManejadorMones;
 
 public class Mundo {
 
@@ -20,26 +23,41 @@ public class Mundo {
     private int[][] tiles;
     private final Manejador handler;
     private ManejadorEntidades manejadorEntidades;
-    private ArrayList<Mon> mones;
+    private final ArrayList<Mon> mones;
+    private ManejadorMones manejadorMones = new ManejadorMones();
 
     public Mundo(Manejador handler, String ruta) {
         this.handler = handler;
-        
         this.mones = new ArrayList<>();
+        
+        //Organizar todos los mones en el ArrayList
+        
         //Organizar todos los mones en el ArrayList
         
         this.manejadorEntidades = new ManejadorEntidades(handler, new Jugador(handler, this.spwX, this.spwY));
         this.manejadorEntidades.addEntidad(new Tree(handler, 950.0F, 900.0F, 32, 32));
 
         cargarMundo(ruta);
+        manejadorMones.cargarArchivoMones();
         this.manejadorEntidades.getPlayer().setX(this.spwX);
         this.manejadorEntidades.getPlayer().setY(this.spwY);
     }
     
+    public Mon monAleatorio(){
+        Random rand = new Random();
+        int n;
+        n = rand.nextInt(manejadorMones.getCantMon());
+        float randWidth = rand.nextInt(width); 
+        float randHeight = rand.nextInt(height);
+        Mon mon = new Mon(n, Utilidad.parseInt(manejadorMones.getArchivoMones()[n][1]), Utilidad.parseInt(manejadorMones.getArchivoMones()[n][2]), manejadorMones.getArchivoMones()[n][3], Assets.mones[n], handler, randWidth, randHeight);
+        return mon;
+    }
+    
     public void RandomSpawn(){
         Random rand = new Random();
+        manejadorMones.getMones().clear();
         for(int i = 0; i <= 10; i++){
-            
+            manejadorMones.addMones(monAleatorio());
         }
     }
 
@@ -58,6 +76,7 @@ public class Mundo {
             }
         }
         this.manejadorEntidades.render(g);
+        this.manejadorMones.render(g);
     }
 
     public Tile getTile(int x, int y) {
