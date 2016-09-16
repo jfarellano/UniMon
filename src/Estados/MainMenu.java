@@ -33,8 +33,8 @@ public class MainMenu extends State {
 
     @Override
     public void tick() {
-        if (this.handler.getManejadorTeclas().space) {
-            State.setState(this.handler.getGame().getGameState());
+        if (handler.getManejadorTeclas().space) {
+            State.setState(handler.getGame().getGameState());
         }
         uiMananger.tick();
     }

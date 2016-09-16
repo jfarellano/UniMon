@@ -10,6 +10,7 @@ public class BrickTile
     super(Assets.Brick, id);
   }
   
+  @Override
   public boolean caminable()
   {
     return true;

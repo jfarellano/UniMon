@@ -7,7 +7,8 @@ import pokemonj.Manejador;
 import pokemonj.Tile.Tile;
 
 public abstract class Individuo
-extends Entidad {
+        extends Entidad {
+
     public static final int VIDA_BASE = 10;
     public static final float VELOCIDAD_BASE = 3.0f;
     public static final int TAMANO_BASE_WIDTH = 32;
@@ -32,21 +33,21 @@ extends Entidad {
 
     public void moveX() {
         if (this.xMov > 0.0f) {
-            int tx = (int)(this.x + this.xMov + (float)this.limites.x + (float)this.limites.width) / 32;
-            this.x = this.pegoTile(tx, (int)(this.y + (float)this.limites.y) / 32) && this.pegoTile(tx, (int)(this.y + (float)this.limites.y + (float)this.limites.height) / 32) ? (this.x += this.xMov) : (float)(tx * 32 - this.limites.x - this.limites.width - 1);
+            int tx = (int) (this.x + this.xMov + (float) this.limites.x + (float) this.limites.width) / 32;
+            this.x = this.pegoTile(tx, (int) (this.y + (float) this.limites.y) / 32) && this.pegoTile(tx, (int) (this.y + (float) this.limites.y + (float) this.limites.height) / 32) ? (this.x += this.xMov) : (float) (tx * 32 - this.limites.x - this.limites.width - 1);
         } else if (this.xMov < 0.0f) {
-            int tx = (int)(this.x + this.xMov + (float)this.limites.x) / 32;
-            this.x = this.pegoTile(tx, (int)(this.y + (float)this.limites.y) / 32) && this.pegoTile(tx, (int)(this.y + (float)this.limites.y + (float)this.limites.height) / 32) ? (this.x += this.xMov) : (float)(tx * 32 + 32 - this.limites.x);
+            int tx = (int) (this.x + this.xMov + (float) this.limites.x) / 32;
+            this.x = this.pegoTile(tx, (int) (this.y + (float) this.limites.y) / 32) && this.pegoTile(tx, (int) (this.y + (float) this.limites.y + (float) this.limites.height) / 32) ? (this.x += this.xMov) : (float) (tx * 32 + 32 - this.limites.x);
         }
     }
 
     public void moveY() {
         if (this.yMov < 0.0f) {
-            int ty = (int)(this.y + this.yMov + (float)this.limites.y) / 32;
-            this.y = this.pegoTile((int)(this.x + (float)this.limites.x) / 32, ty) && this.pegoTile((int)(this.x + (float)this.limites.x + (float)this.limites.width) / 32, ty) ? (this.y += this.yMov) : (float)(ty * 32 + 32 - this.limites.y);
+            int ty = (int) (this.y + this.yMov + (float) this.limites.y) / 32;
+            this.y = this.pegoTile((int) (this.x + (float) this.limites.x) / 32, ty) && this.pegoTile((int) (this.x + (float) this.limites.x + (float) this.limites.width) / 32, ty) ? (this.y += this.yMov) : (float) (ty * 32 + 32 - this.limites.y);
         } else if (this.yMov > 0.0f) {
-            int ty = (int)(this.y + this.yMov + (float)this.limites.y + (float)this.limites.height) / 32;
-            this.y = this.pegoTile((int)(this.x + (float)this.limites.x) / 32, ty) && this.pegoTile((int)(this.x + (float)this.limites.x + (float)this.limites.width) / 32, ty) ? (this.y += this.yMov) : (float)(ty * 32 - this.limites.y - this.limites.height - 1);
+            int ty = (int) (this.y + this.yMov + (float) this.limites.y + (float) this.limites.height) / 32;
+            this.y = this.pegoTile((int) (this.x + (float) this.limites.x) / 32, ty) && this.pegoTile((int) (this.x + (float) this.limites.x + (float) this.limites.width) / 32, ty) ? (this.y += this.yMov) : (float) (ty * 32 - this.limites.y - this.limites.height - 1);
         }
     }
 

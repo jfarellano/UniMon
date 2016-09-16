@@ -25,15 +25,12 @@ public class Mundo {
     private final Manejador handler;
     private ManejadorEntidades manejadorEntidades;
     private final ArrayList<Mon> mones;
-    private ManejadorMones manejadorMones = new ManejadorMones();
+    private ManejadorMones manejadorMones;
 
     public Mundo(Manejador handler, String ruta) {
         this.handler = handler;
+        this.manejadorMones = new ManejadorMones(handler);
         this.mones = new ArrayList<>();
-        
-        //Organizar todos los mones en el ArrayList
-        
-        //Organizar todos los mones en el ArrayList
         
         this.manejadorEntidades = new ManejadorEntidades(handler, new Jugador(handler, this.spwX, this.spwY));
         this.manejadorEntidades.addEntidad(new Tree(handler, 950.0F, 900.0F, 32, 32));
@@ -49,9 +46,15 @@ public class Mundo {
         Random rand = new Random();
         int n;
         n = rand.nextInt(manejadorMones.getCantMon());
-        float randWidth = rand.nextInt(width) * 32; 
-        float randHeight = rand.nextInt(height) * 32;
-        Mon mon = new Mon(n, Utilidad.parseInt(manejadorMones.getArchivoMones()[n][1]), Utilidad.parseInt(manejadorMones.getArchivoMones()[n][2]), manejadorMones.getArchivoMones()[n][3], Assets.mones[n], handler, randWidth, randHeight);
+        float randX = rand.nextInt(width) * 32; 
+        float randY = rand.nextInt(height) * 32;
+        while(!PosValida((int)randX, (int)randY)){
+            if(!PosValida((int)randX, (int)randY)){
+            randX = rand.nextInt(width) * 32; 
+            randY = rand.nextInt(height) * 32;   
+            }
+        }
+        Mon mon = new Mon(n, Utilidad.parseInt(manejadorMones.getArchivoMones()[n][1]), Utilidad.parseInt(manejadorMones.getArchivoMones()[n][2]), manejadorMones.getArchivoMones()[n][3], Assets.mones[n], handler, randX, randY);
         return mon;
     }
     
@@ -61,6 +64,13 @@ public class Mundo {
         for(int i = 0; i <= 10; i++){
             manejadorMones.addMones(monAleatorio());
         }
+    }
+    
+    public boolean PosValida(int x, int y){
+        if(Tile.tiles[tiles[x / 32][y / 32]].caminable()){
+            return true;
+        }
+        return false;
     }
 
     public void tick() {

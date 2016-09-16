@@ -1,24 +1,33 @@
 package Entidades.EntidadEstatica;
 
 import Entidades.Entidad;
+import Estados.State;
 import Utilidad.Utilidad;
 import gfx.Assets;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Iterator;
+import pokemonj.Manejador;
 
 public class ManejadorMones {
 
+    private Manejador handler;
     private ArrayList<Mon> mones;
     private String[][] archivoMones;
     private int cantMon;
+
+    public ManejadorMones(Manejador handler) {
+        this.handler = handler;
+        this.mones = new ArrayList<>();
+    }
+    
+    
     
     public void addMones(Mon m){
         mones.add(m);
     }
     
     public void cargarArchivoMones(){
-        mones = new ArrayList<>();
         String file = Utilidad.loadFileAsString("res/Mon/monBase.txt");
         String[] separados = file.split("\\s+");
         cantMon = Utilidad.parseInt(separados[0]);
@@ -32,8 +41,13 @@ public class ManejadorMones {
         }
     }
     
+    
+    
     public void render(Graphics g){
         for (Mon m : mones) {
+            if(m.getX() ==  (handler.getMundo().getManejadorEntidades().getPlayer().getX())/32 &&  m.getY() == (handler.getMundo().getManejadorEntidades().getPlayer().getY()) / 32) {
+                State.setState(handler.getGame().getBattle());
+            }
             g.drawImage(m.text, (int)(m.getX() - m.getHandler().getCamaraJuego().getxDesfase()), (int)(m.getY() - m.getHandler().getCamaraJuego().getyDesfase()), m.getWidth(), m.getHeight(), null);
         }
     }

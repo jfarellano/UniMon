@@ -3,26 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/res/Mundos/mundoBase.txt</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/Individuos/Individuo.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/UIMananger.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/MainMenu.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/ClickListener.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/ManejadorEntidades.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/Entidad.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Input/ManejadorMouse.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Juego.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Manejador.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/State.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/GameState.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/Button.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Tile/Tile.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/gfx/Animacion.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Tile/EscaleraTile.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/gfx/Assets.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Estatica.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Pantalla.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Tile/GrassTile.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Tree.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Input/ManejadorTeclas.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Utilidad/Utilidad.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Mundos/Mundo.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Tile/BBTile.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/res/Mundos/mundoBase.txt</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/MainMenu.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/ClickListener.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Tile/BrickTile.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Juego.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Manejador.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/Battle.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/GameState.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/gfx/CamaraJuego.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/gfx/Animacion.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/ManejadorMones.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/UIObject.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/Individuos/Jugador.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Tree.java</file>
         </group>
     </open-files>
 </project-private>

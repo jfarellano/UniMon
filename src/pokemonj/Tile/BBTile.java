@@ -10,6 +10,7 @@ public class BBTile
     super(Assets.BB, id);
   }
   
+  @Override
   public boolean caminable()
   {
     return false;
