@@ -1,10 +1,9 @@
 package Entidades.Individuos;
 
 import Entidades.Entidad;
-import Mundos.Mundo;
-import java.awt.Rectangle;
+import Estados.Battle;
+import Estados.State;
 import pokemonj.Manejador;
-import pokemonj.Tile.Tile;
 
 public abstract class Individuo
         extends Entidad {
@@ -28,6 +27,9 @@ public abstract class Individuo
         }
         if (!this.checkColision(0.0f, this.yMov)) {
             this.moveY();
+        }
+        if(this.checkMon(xMov, yMov) != null){
+            State.setState(new Battle(handler, this.checkMon(xMov, yMov)));
         }
     }
 

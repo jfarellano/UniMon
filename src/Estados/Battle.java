@@ -1,13 +1,16 @@
 package Estados;
 
-import gfx.Assets;
+import Entidades.EntidadEstatica.Mon;
 import java.awt.Graphics;
 import pokemonj.Manejador;
 
 public class Battle extends State{
+    
+    private Mon m;
 
-    public Battle(Manejador handler) {
+    public Battle(Manejador handler, Mon m) {
         super(handler);
+        this.m = m;
     }
 
     @Override
@@ -17,7 +20,7 @@ public class Battle extends State{
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.BB, 0, 0, null);
+        m.render(g);
     }
 
 }

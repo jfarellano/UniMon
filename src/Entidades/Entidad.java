@@ -1,7 +1,9 @@
 package Entidades;
 
+import Entidades.EntidadEstatica.Mon;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.Iterator;
 import pokemonj.Manejador;
 
 public abstract class Entidad {
@@ -31,6 +33,15 @@ public abstract class Entidad {
             return true;
         }
         return false;
+    }
+    
+    public Mon checkMon(float xDesfase, float yDesfase){
+        for (Iterator<Mon> it = this.handler.getMundo().getManejadorEntidades().getMones().iterator(); it.hasNext();) {
+            Entidad e = it.next();
+            if (e.equals(this) || !e.getCollisionBounds(0.0f, 0.0f).intersects(this.getCollisionBounds(xDesfase, yDesfase))) continue;
+            return (Mon) e;
+        }
+        return null;
     }
 
     public Rectangle getCollisionBounds(float xDesfase, float yDesfase) {

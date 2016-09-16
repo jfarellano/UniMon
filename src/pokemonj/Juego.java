@@ -1,6 +1,5 @@
 package pokemonj;
 
-import Estados.Battle;
 import Estados.GameState;
 import Estados.MainMenu;
 import Estados.State;
@@ -24,7 +23,6 @@ public class Juego implements Runnable {
     private State gameState;
     private State mainMenu;
     private State pause;
-    private State battle;
     private final ManejadorTeclas manejador;
     private final ManejadorMouse manejadorMouse;
     private CamaraJuego camara;
@@ -43,7 +41,6 @@ public class Juego implements Runnable {
 
         this.gameState = new GameState(this.handler);
         this.mainMenu = new MainMenu(this.handler, "/Texturas/Fondo.png");
-        this.battle = new Battle(handler);
         State.setState(this.mainMenu);
     }
 
@@ -151,9 +148,5 @@ public class Juego implements Runnable {
 
     public State getPause() {
         return this.pause;
-    }
-
-    public State getBattle() {
-        return this.battle;
     }
 }

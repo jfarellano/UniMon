@@ -1,6 +1,5 @@
 package Entidades.EntidadEstatica;
 
-import gfx.Assets;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import pokemonj.Manejador;
@@ -18,20 +17,28 @@ public class Mon extends Estatica {
         this.id = id;
         this.nombre = nombre;
         this.text = text;
+        this.limites.x = 0;
+        this.limites.y = 0;
+        this.limites.width = 32;
+        this.limites.height = 32;
     }
 
     @Override
     public void tick() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        
     }
 
     @Override
     public void render(Graphics g) {
-        g.drawImage(Assets.mones[id], (int)(this.x - this.handler.getCamaraJuego().getxDesfase()), (int)(this.y - this.handler.getCamaraJuego().getyDesfase()), this.width, this.height, null);
+        g.drawImage(text, (int)(this.x - this.handler.getCamaraJuego().getxDesfase()), (int)(this.y - this.handler.getCamaraJuego().getyDesfase()), this.width, this.height, null);
     }
 
     public Manejador getHandler() {
         return handler;
+    }
+
+    public BufferedImage getText() {
+        return text;
     }
     
     
