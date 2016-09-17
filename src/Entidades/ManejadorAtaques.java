@@ -25,4 +25,9 @@ public class ManejadorAtaques {
         }
     }
 
+    public int getCantAtaq() {
+        return CantAtaq;
+    }
+
+    
 }

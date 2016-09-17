@@ -5,8 +5,7 @@ import Mundos.Mundo;
 import java.awt.Graphics;
 import pokemonj.Manejador;
 
-public class GameState
-extends State {
+public class GameState extends State {
     private Mundo world;
 
     public GameState(Manejador handler) {

@@ -17,7 +17,8 @@ public class Battle extends State{
     private Jugador player;
     private UIMananger uiMananger;
     private Random rand;
-    private int turno, qtAtackPlayer;
+    private int turno;
+    private Ataque qtAtackPlayer;
 
     public Battle(Manejador handler, Mon m, Jugador player) {
         super(handler);
@@ -27,24 +28,22 @@ public class Battle extends State{
         this.uiMananger = new UIMananger(handler);
         this.turno = rand.nextInt(2);
         handler.getManejadorMouse().setUIMananger(uiMananger);
-        uiMananger.addObject(new Button(8 * 32, 10 * 32, 160, 32, Assets.Button, "Ataque 1", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32, 10 * 32, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[0]).nombre, new ClickListener(){
             @Override
             public void onClick() {
-                qtAtackPlayer = player.atack;
+                qtAtackPlayer = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[0]);
             }
         }));
-        uiMananger.addObject(new Button(8 * 32 + 170, 10 * 32, 160, 32, Assets.Button, "Ataque 2", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32 + 170, 10 * 32, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[1]).nombre, new ClickListener(){
             @Override
             public void onClick() {
-                handler.getManejadorMouse().setUIMananger(null);
-                State.setState(handler.getGame().getGameState());
+                qtAtackPlayer = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[1]);
             }
         }));
-        uiMananger.addObject(new Button(8 * 32, 11 * 32 + 20, 160, 32, Assets.Button, "Ataque 3", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32, 11 * 32 + 20, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[2]).nombre, new ClickListener(){
             @Override
             public void onClick() {
-                handler.getManejadorMouse().setUIMananger(null);
-                State.setState(handler.getGame().getGameState());
+                qtAtackPlayer = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[2]);
             }
         }));
         uiMananger.addObject(new Button(8 * 32 + 170, 11 * 32 + 20, 160, 32, Assets.Button, "Huir", new ClickListener(){
@@ -69,10 +68,11 @@ public class Battle extends State{
             turno = 1;
             System.out.println("Vida Player:"+player.getVida());
         }else{
-            if(qtAtackPlayer != 0){
-                m.vida -= qtAtackPlayer;
+            if(qtAtackPlayer != null){
+                m.vida -= qtAtackPlayer.magnitud;
+                System.out.println("Turpial ataca con:" + qtAtackPlayer.nombre);
                 System.out.println("Vida mon:"+m.vida);
-                qtAtackPlayer = 0;
+                qtAtackPlayer = null;
                 turno = 0;
                 if(m.vida <= 0){
                     handler.getMundo().getManejadorEntidades().delMones(m);

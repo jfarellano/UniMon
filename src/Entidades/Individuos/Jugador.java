@@ -6,6 +6,7 @@ import gfx.Animacion;
 import gfx.Assets;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.util.Random;
 import pokemonj.Manejador;
 
 public class Jugador extends Individuo {
@@ -15,9 +16,10 @@ public class Jugador extends Individuo {
     private final Animacion animUp;
     private final Animacion animIzq;
     private final Animacion animDer;
+    private Random r = new Random();;
     int last;
     public int atack = 30;
-    public int[] ataques;
+    public int[] ataquesActivos = new int[3], ataquesLista = new int[30];
 
     public Jugador(Manejador handler, float x, float y) {
         super(handler, x, y, 32, 32);
@@ -25,6 +27,7 @@ public class Jugador extends Individuo {
         this.limites.y = 0;
         this.limites.width = 13;
         this.limites.height = 30;
+        ataquesAleatorios();
         this.quieto = new BufferedImage[4];
         this.quieto[0] = Assets.Turpial_Der[0];
         this.quieto[1] = Assets.Turpial_Izq[0];
@@ -34,6 +37,14 @@ public class Jugador extends Individuo {
         this.animDer = new Animacion(200, Assets.Turpial_Der);
         this.animIzq = new Animacion(200, Assets.Turpial_Izq);
         this.animUp = new Animacion(200, Assets.Turpial_Up);
+    }
+    
+    private void ataquesAleatorios(){
+        for(int i = 0; i < 3; i++){
+            int j = r.nextInt(11);
+            ataquesActivos[i] = j;
+            ataquesLista[i] = ataquesActivos[i];
+        }
     }
 
     private void getInput() {
