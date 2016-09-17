@@ -1,20 +1,23 @@
 package Entidades.Individuos;
 
 import Entidades.Entidad;
+import Estados.State;
 import gfx.Animacion;
 import gfx.Assets;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import pokemonj.Manejador;
 
-public class Jugador
-extends Individuo {
+public class Jugador extends Individuo {
+
     private BufferedImage[] quieto;
     private Animacion animDw;
     private Animacion animUp;
     private Animacion animIzq;
     private Animacion animDer;
     int last;
+    public int vida = 105;
+    public int atack = 30;
 
     public Jugador(Manejador handler, float x, float y) {
         super(handler, x, y, 32, 32);
@@ -37,13 +40,13 @@ extends Individuo {
         this.xMov = 0.0f;
         this.yMov = 0.0f;
         if (this.handler.getGame().getManejador().up) {
-            this.yMov = - this.velocidad;
+            this.yMov = -this.velocidad;
         }
         if (this.handler.getGame().getManejador().down) {
             this.yMov = this.velocidad;
         }
         if (this.handler.getGame().getManejador().left) {
-            this.xMov = - this.velocidad;
+            this.xMov = -this.velocidad;
         }
         if (this.handler.getGame().getManejador().rigth) {
             this.xMov = this.velocidad;
@@ -57,11 +60,14 @@ extends Individuo {
         this.animUp.tick();
         this.getInput();
         this.move();
-        this.handler.getGame().getCamaraJuego().centrar((Entidad)this);
+        this.handler.getGame().getCamaraJuego().centrar((Entidad) this);
     }
 
     public void render(Graphics g) {
-        g.drawImage(this.conseguirCuadro(), (int)(this.x - this.handler.getCamaraJuego().getxDesfase()), (int)(this.y - this.handler.getCamaraJuego().getyDesfase()), this.width, this.height, null);
+        if(State.getState() != handler.getGame().getGameState()){
+            g.drawImage(Assets.Turpial_Der[0], 2 * 32, 7 * 32, 32 * 5, 32* 5, null);
+        }else
+        g.drawImage(this.conseguirCuadro(), (int) (this.x - this.handler.getCamaraJuego().getxDesfase()), (int) (this.y - this.handler.getCamaraJuego().getyDesfase()), this.width, this.height, null);
     }
 
     private BufferedImage conseguirCuadro() {

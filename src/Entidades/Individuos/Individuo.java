@@ -1,6 +1,7 @@
 package Entidades.Individuos;
 
 import Entidades.Entidad;
+import Entidades.EntidadEstatica.Mon;
 import Estados.Battle;
 import Estados.State;
 import pokemonj.Manejador;
@@ -29,7 +30,9 @@ public abstract class Individuo
             this.moveY();
         }
         if(this.checkMon(xMov, yMov) != null){
-            State.setState(new Battle(handler, this.checkMon(xMov, yMov)));
+            Mon m = this.checkMon(xMov, yMov);
+            m.image = m.text;
+            State.setState(new Battle(handler, m, handler.getMundo().getManejadorEntidades().getPlayer()));
         }
     }
 

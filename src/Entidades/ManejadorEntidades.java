@@ -34,6 +34,10 @@ public final class ManejadorEntidades {
      public void addMones(Mon m){
         mones.add(m);
     }
+     
+    public void delMones(Mon m){
+        mones.remove(m);
+    }
     
     public void cargarArchivoMones(){
         String file = Utilidad.loadFileAsString("res/Mon/monBase.txt");
