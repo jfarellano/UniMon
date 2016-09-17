@@ -27,27 +27,27 @@ public class Battle extends State{
         this.uiMananger = new UIMananger(handler);
         this.turno = rand.nextInt(2);
         handler.getManejadorMouse().setUIMananger(uiMananger);
-        uiMananger.addObject(new Button(8 * 32, 10 * 32, 160, 32, Assets.Button, new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32, 10 * 32, 160, 32, Assets.Button, "Ataque 1", new ClickListener(){
             @Override
             public void onClick() {
                 qtAtackPlayer = player.atack;
             }
         }));
-        uiMananger.addObject(new Button(8 * 32 + 170, 10 * 32, 160, 32, Assets.Button, new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32 + 170, 10 * 32, 160, 32, Assets.Button, "Ataque 2", new ClickListener(){
             @Override
             public void onClick() {
                 handler.getManejadorMouse().setUIMananger(null);
                 State.setState(handler.getGame().getGameState());
             }
         }));
-        uiMananger.addObject(new Button(8 * 32, 11 * 32 + 20, 160, 32, Assets.Button, new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32, 11 * 32 + 20, 160, 32, Assets.Button, "Ataque 3", new ClickListener(){
             @Override
             public void onClick() {
                 handler.getManejadorMouse().setUIMananger(null);
                 State.setState(handler.getGame().getGameState());
             }
         }));
-        uiMananger.addObject(new Button(8 * 32 + 170, 11 * 32 + 20, 160, 32, Assets.Button, new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32 + 170, 11 * 32 + 20, 160, 32, Assets.Button, "Huir", new ClickListener(){
             @Override
             public void onClick() {
                 handler.getManejadorMouse().setUIMananger(null);
@@ -61,13 +61,13 @@ public class Battle extends State{
         uiMananger.tick();
         if(turno == 0){
             Ataque a = m.ataq();
-            player.vida -= a.magnitud;
+            player.setVida((float)player.getVida() - a.magnitud);
             System.out.println(m.nombre + " ataca con:" + a.nombre);
-            if(player.vida <= 0){
+            if(player.getVida() <= 0){
                 State.setState(new GameOver(handler));
             }
             turno = 1;
-            System.out.println("Vida Player:"+player.vida);
+            System.out.println("Vida Player:"+player.getVida());
         }else{
             if(qtAtackPlayer != 0){
                 m.vida -= qtAtackPlayer;

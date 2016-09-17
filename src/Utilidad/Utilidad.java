@@ -37,4 +37,17 @@ public class Utilidad
     }
     return 0;
   }
+  
+  public static float parseFloat(String numero)
+  {
+    try
+    {
+      return Float.parseFloat(numero);
+    }
+    catch (NumberFormatException e)
+    {
+      e.printStackTrace();
+    }
+    return 0;
+  }
 }

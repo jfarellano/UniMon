@@ -10,14 +10,14 @@ import pokemonj.Manejador;
 
 public class Jugador extends Individuo {
 
-    private BufferedImage[] quieto;
-    private Animacion animDw;
-    private Animacion animUp;
-    private Animacion animIzq;
-    private Animacion animDer;
+    private final BufferedImage[] quieto;
+    private final Animacion animDw;
+    private final Animacion animUp;
+    private final Animacion animIzq;
+    private final Animacion animDer;
     int last;
-    public int vida = 105;
     public int atack = 30;
+    public int[] ataques;
 
     public Jugador(Manejador handler, float x, float y) {
         super(handler, x, y, 32, 32);
@@ -53,6 +53,7 @@ public class Jugador extends Individuo {
         }
     }
 
+    @Override
     public void tick() {
         this.animDer.tick();
         this.animDw.tick();
@@ -63,6 +64,7 @@ public class Jugador extends Individuo {
         this.handler.getGame().getCamaraJuego().centrar((Entidad) this);
     }
 
+    @Override
     public void render(Graphics g) {
         if(State.getState() != handler.getGame().getGameState()){
             g.drawImage(Assets.Turpial_Der[0], 2 * 32, 7 * 32, 32 * 5, 32* 5, null);
@@ -88,5 +90,15 @@ public class Jugador extends Individuo {
             return this.animDw.getFrame();
         }
         return this.quieto[this.last];
+    }
+
+    @Override
+    public float getVida() {
+        return vida;
+    }
+
+    @Override
+    public void setVida(float vida) {
+        this.vida = vida;
     }
 }

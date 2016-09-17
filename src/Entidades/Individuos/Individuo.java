@@ -9,11 +9,11 @@ import pokemonj.Manejador;
 public abstract class Individuo
         extends Entidad {
 
-    public static final int VIDA_BASE = 10;
+    public static final int VIDA_BASE = 100;
     public static final float VELOCIDAD_BASE = 3.0f;
     public static final int TAMANO_BASE_WIDTH = 32;
     public static final int TAMANO_BASE_HEIGHT = 32;
-    protected float vida = 10.0f;
+    protected float vida = 100.0f;
     protected float velocidad = 3.0f;
     protected float xMov = 0.0f;
     protected float yMov = 0.0f;
