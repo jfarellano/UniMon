@@ -2,7 +2,6 @@ package Entidades;
 
 import Entidades.EntidadEstatica.Mon;
 import Entidades.Individuos.Jugador;
-import Estados.State;
 import Utilidad.Utilidad;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -16,6 +15,7 @@ public final class ManejadorEntidades {
     private ArrayList<Mon> mones;
     private String[][] archivoMones;
     private int cantMon;
+    private ManejadorAtaques manejadorAtaques;
     private final Comparator<Entidad> ordenRender = (a, b) -> {
         if (a.getY() + (float)a.getHeight() < b.getY() + (float)b.getHeight()) {
             return -1;
@@ -26,9 +26,12 @@ public final class ManejadorEntidades {
     public ManejadorEntidades(Manejador handler, Jugador player) {
         this.handler = handler;
         this.player = player;
+        this.manejadorAtaques = new ManejadorAtaques();
+        manejadorAtaques.cargarAtaques();
         this.mones = new ArrayList<>();
         this.entidades = new ArrayList();
         this.addEntidad((Entidad)player);
+        cargarArchivoMones();
     }
     
      public void addMones(Mon m){
@@ -43,10 +46,10 @@ public final class ManejadorEntidades {
         String file = Utilidad.loadFileAsString("res/Mon/monBase.txt");
         String[] separados = file.split("\\s+");
         cantMon = Utilidad.parseInt(separados[0]);
-        archivoMones = new String[cantMon][4];
+        archivoMones = new String[cantMon][7];
         int pos = 1;
         for(int i = 0; i < cantMon; i++){
-            for(int j = 0; j < 4; j++){
+            for(int j = 0; j < 7; j++){
                 archivoMones[i][j] = separados[pos];
                 pos++;
             }
@@ -108,5 +111,9 @@ public final class ManejadorEntidades {
 
     public void setEntidades(ArrayList<Entidad> entidades) {
         this.entidades = entidades;
+    }
+
+    public ManejadorAtaques getManejadorAtaques() {
+        return manejadorAtaques;
     }
 }

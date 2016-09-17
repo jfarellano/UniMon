@@ -1,0 +1,16 @@
+15
+10 1 Rasguno
+30 1 ComerAlmuerzo
+50 1 LLamaFeliNorte
+20 1 Coletazo
+30 1 Defeca
+55 1 Persigue
+30 2 LoPrende
+40 2 SeParaAlLado
+60 2 TiraElHumoEnLaCara
+5 2 CaminaLento
+20 2 ParaParaMandarMensaje
+40 2 SeTomaUnaSelfie
+20 3 DiceQueTePares
+30 3 PideCarne
+55 3 TeSacaDeLaZonaDeProfesores

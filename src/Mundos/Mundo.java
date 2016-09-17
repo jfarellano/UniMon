@@ -50,7 +50,7 @@ public class Mundo {
             randY = rand.nextInt(height) * 32;   
             }
         }
-        Mon mon = new Mon(n, Utilidad.parseInt(manejadorEntidades.getArchivoMones()[n][1]), Utilidad.parseInt(manejadorEntidades.getArchivoMones()[n][2]), manejadorEntidades.getArchivoMones()[n][3], Assets.mones[n], handler, randX, randY);
+        Mon mon = new Mon(n, Utilidad.parseInt(manejadorEntidades.getArchivoMones()[n][1]), Utilidad.parseInt(manejadorEntidades.getArchivoMones()[n][2]), manejadorEntidades.getArchivoMones()[n][3], Assets.mones[n], handler, randX, randY, Utilidad.parseInt(manejadorEntidades.getArchivoMones()[n][4]), Utilidad.parseInt(manejadorEntidades.getArchivoMones()[n][5]), Utilidad.parseInt(manejadorEntidades.getArchivoMones()[n][6]));
         return mon;
     }
     

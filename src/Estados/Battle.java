@@ -1,5 +1,6 @@
 package Estados;
 
+import Entidades.Ataque;
 import Entidades.EntidadEstatica.Mon;
 import Entidades.Individuos.Jugador;
 import gfx.Assets;
@@ -59,7 +60,9 @@ public class Battle extends State{
     public void tick() {
         uiMananger.tick();
         if(turno == 0){
-        player.vida -= m.atack;
+            Ataque a = m.ataq();
+            player.vida -= a.magnitud;
+            System.out.println(m.nombre + " ataca con:" + a.nombre);
             if(player.vida <= 0){
                 State.setState(new GameOver(handler));
             }
