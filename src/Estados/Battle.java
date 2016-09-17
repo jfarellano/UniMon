@@ -4,6 +4,7 @@ import Entidades.EntidadEstatica.Mon;
 import Entidades.Individuos.Jugador;
 import gfx.Assets;
 import java.awt.Graphics;
+import java.util.Random;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
 import pokemonj.UI.ClickListener;
@@ -14,27 +15,21 @@ public class Battle extends State{
     private Mon m;
     private Jugador player;
     private UIMananger uiMananger;
+    private Random rand;
+    private int turno, qtAtackPlayer;
 
     public Battle(Manejador handler, Mon m, Jugador player) {
         super(handler);
+        rand = new Random();
         this.m = m;
         this.player = player;
         this.uiMananger = new UIMananger(handler);
+        this.turno = rand.nextInt(2);
         handler.getManejadorMouse().setUIMananger(uiMananger);
         uiMananger.addObject(new Button(8 * 32, 10 * 32, 160, 32, Assets.Button, new ClickListener(){
             @Override
             public void onClick() {
-                player.vida -= m.atack;
-                if(player.vida <= 0){
-                    //State.setState(new GameOver(handler));
-                }
-                System.out.println("Vida Player:"+player.vida);
-                m.vida -= player.atack;
-                System.out.println("Vida mon:"+m.vida);
-                if(m.vida <= 0){
-                    handler.getMundo().getManejadorEntidades().delMones(m);
-                    State.setState(handler.getGame().getGameState());
-                }
+                qtAtackPlayer = player.atack;
             }
         }));
         uiMananger.addObject(new Button(8 * 32 + 170, 10 * 32, 160, 32, Assets.Button, new ClickListener(){
@@ -63,6 +58,25 @@ public class Battle extends State{
     @Override
     public void tick() {
         uiMananger.tick();
+        if(turno == 0){
+        player.vida -= m.atack;
+            if(player.vida <= 0){
+                State.setState(new GameOver(handler));
+            }
+            turno = 1;
+            System.out.println("Vida Player:"+player.vida);
+        }else{
+            if(qtAtackPlayer != 0){
+                m.vida -= qtAtackPlayer;
+                System.out.println("Vida mon:"+m.vida);
+                qtAtackPlayer = 0;
+                turno = 0;
+                if(m.vida <= 0){
+                    handler.getMundo().getManejadorEntidades().delMones(m);
+                    State.setState(handler.getGame().getGameState());
+                }
+            }
+        }
     }
 
     @Override
