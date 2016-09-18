@@ -1,5 +1,6 @@
 package Mundos;
 
+import Entidades.EntidadEstatica.Dispensador;
 import Entidades.EntidadEstatica.Mon;
 import Entidades.EntidadEstatica.Tree;
 import Entidades.Individuos.Jugador;
@@ -30,6 +31,7 @@ public class Mundo {
         
         this.manejadorEntidades = new ManejadorEntidades(handler, new Jugador(handler, this.spwX, this.spwY));
         this.manejadorEntidades.addEntidad(new Tree(handler, 950.0F, 900.0F, 32, 32));
+        this.manejadorEntidades.addDisp(new Dispensador(handler, 70, 100, 32, 32));
 
         cargarMundo(ruta);
         manejadorEntidades.cargarArchivoMones();

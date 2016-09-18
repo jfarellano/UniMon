@@ -12,6 +12,7 @@ public class Assets
   public static BufferedImage Bench;
   public static BufferedImage Escalera;
   public static BufferedImage BB;
+  public static BufferedImage Dispensadora;
   public static BufferedImage Blank;
   public static BufferedImage[] Turpial_Der;
   public static BufferedImage[] Turpial_Izq;
@@ -37,6 +38,7 @@ public class Assets
     mones[4] = sheet.crop(WIDTH * 6, HEIGHT * 2, WIDTH, HEIGHT);
     
     Blank = sheet.crop(WIDTH * 7, HEIGHT * 2, WIDTH, HEIGHT);
+    Dispensadora = sheet.crop(WIDTH * 8, HEIGHT * 2, WIDTH, HEIGHT);
     Turpial_Der[0] = sheet.crop(0, 0, 32, 32);
     Turpial_Der[1] = sheet.crop(32, 0, 32, 32);
     Turpial_Der[2] = sheet.crop(0, 32, 32, 32);

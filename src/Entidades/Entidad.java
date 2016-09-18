@@ -1,5 +1,6 @@
 package Entidades;
 
+import Entidades.EntidadEstatica.Dispensador;
 import Entidades.EntidadEstatica.Mon;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -35,9 +36,16 @@ public abstract class Entidad {
         return false;
     }
     
+    public Dispensador checkDisp(float xDesfase, float yDesfase) {
+        for (Entidad e : this.handler.getMundo().getManejadorEntidades().getDispensadores()) {
+            if (e.equals(this) || !e.getCollisionBounds(0.0f, 0.0f).intersects(this.getCollisionBounds(xDesfase, yDesfase))) continue;
+            return (Dispensador) e;
+        }
+        return null;
+    }
+    
     public Mon checkMon(float xDesfase, float yDesfase){
-        for (Iterator<Mon> it = this.handler.getMundo().getManejadorEntidades().getMones().iterator(); it.hasNext();) {
-            Entidad e = it.next();
+        for (Entidad e : this.handler.getMundo().getManejadorEntidades().getMones()) {
             if (e.equals(this) || !e.getCollisionBounds(0.0f, 0.0f).intersects(this.getCollisionBounds(xDesfase, yDesfase))) continue;
             return (Mon) e;
         }

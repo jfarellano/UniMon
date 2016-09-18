@@ -1,5 +1,6 @@
 package Entidades;
 
+import Entidades.EntidadEstatica.Dispensador;
 import Entidades.EntidadEstatica.Mon;
 import Entidades.Individuos.Jugador;
 import Utilidad.Utilidad;
@@ -13,6 +14,7 @@ public final class ManejadorEntidades {
     private Jugador player;
     private ArrayList<Entidad> entidades;
     private ArrayList<Mon> mones;
+     private ArrayList<Dispensador> dispensadores;
     private String[][] archivoMones;
     private int cantMon;
     private ManejadorAtaques manejadorAtaques;
@@ -29,6 +31,7 @@ public final class ManejadorEntidades {
         this.manejadorAtaques = new ManejadorAtaques();
         manejadorAtaques.cargarAtaques();
         this.mones = new ArrayList<>();
+        this.dispensadores = new ArrayList<>();
         this.entidades = new ArrayList();
         this.addEntidad((Entidad)player);
         cargarArchivoMones();
@@ -40,6 +43,10 @@ public final class ManejadorEntidades {
      
     public void delMones(Mon m){
         mones.remove(m);
+    }
+    
+    public void addDisp(Dispensador d){
+        dispensadores.add(d);
     }
     
     public void cargarArchivoMones(){
@@ -68,6 +75,10 @@ public final class ManejadorEntidades {
         return mones;
     }
 
+    public ArrayList<Dispensador> getDispensadores() {
+        return dispensadores;
+    }
+    
     public void tick() {
         for (int i = 0; i < this.entidades.size(); ++i) {
             Entidad e = this.entidades.get(i);
@@ -82,6 +93,9 @@ public final class ManejadorEntidades {
         }
         for (Mon m : mones) {
             m.render(g);
+        }
+        for (Dispensador d : dispensadores){
+            d.render(g);
         }
     }
 
