@@ -9,8 +9,8 @@ public class Dispensador extends Estatica{
     int timer = 0;
     public int func = 0;
 
-    public Dispensador(Manejador handler, float x, float y, int width, int height) {
-        super(handler, x, y, width, height);
+    public Dispensador(Manejador handler, float x , float y, int width, int height) {
+        super(handler, x * 32, y *32, width, height);
         this.limites.x = 10;
         this.limites.y = 0;
         this.limites.width = 10;
