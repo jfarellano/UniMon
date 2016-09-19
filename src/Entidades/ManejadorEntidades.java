@@ -85,17 +85,22 @@ public final class ManejadorEntidades {
             e.tick();
         }
         this.entidades.sort(this.ordenRender);
+        for (int i = 0; i < this.dispensadores.size(); ++i) {
+            Dispensador d = this.dispensadores.get(i);
+            d.tick();
+        }
+        this.dispensadores.sort(this.ordenRender);
     }
 
     public void render(Graphics g) {
+         for (Dispensador d : dispensadores){
+            d.render(g);
+        }
         for (Entidad e : this.entidades) {
             e.render(g);
         }
         for (Mon m : mones) {
             m.render(g);
-        }
-        for (Dispensador d : dispensadores){
-            d.render(g);
         }
     }
 

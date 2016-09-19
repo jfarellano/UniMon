@@ -4,7 +4,6 @@ import Entidades.EntidadEstatica.Dispensador;
 import Entidades.EntidadEstatica.Mon;
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.Iterator;
 import pokemonj.Manejador;
 
 public abstract class Entidad {

@@ -2,7 +2,6 @@ package pokemonj.UI;
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import pokemonj.Manejador;
 
@@ -13,7 +12,7 @@ public class UIMananger {
 
     public UIMananger(Manejador handler) {
         this.handler = handler;
-        this.objects = new ArrayList<UIObject>();
+        this.objects = new ArrayList<>();
     }
 
     
@@ -50,6 +49,7 @@ public class UIMananger {
     public void removeObject(UIObject o){
         objects.remove(o);
     }
+    
 
     public Manejador getHandler() {
         return handler;

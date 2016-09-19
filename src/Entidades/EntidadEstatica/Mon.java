@@ -11,6 +11,7 @@ import pokemonj.Manejador;
 public class Mon extends Estatica {
     
     public int vida, id;
+    public final int VIDA_BASE;
     public String nombre;
     public BufferedImage text, image;
     public int[] ataques = new int[3];
@@ -29,6 +30,7 @@ public class Mon extends Estatica {
         this.limites.width = 32;
         this.limites.height = 32;
         this.image = Assets.Blank;
+        this.VIDA_BASE = vida;
     }
 
     @Override

@@ -33,7 +33,7 @@ public class Mundo {
         this.manejadorEntidades.addEntidad(new Tree(handler, 950.0F, 900.0F, 32, 32));
         this.manejadorEntidades.addDisp(new Dispensador(handler, 14, 13, 32, 32));
         this.manejadorEntidades.addDisp(new Dispensador(handler, 21, 21, 32, 32));
-        this.manejadorEntidades.addDisp(new Dispensador(handler, 1, 27, 32, 32));
+        this.manejadorEntidades.addDisp(new Dispensador(handler, 1, 26, 32, 32));
         this.manejadorEntidades.addDisp(new Dispensador(handler, 46, 23, 32, 32));
         this.manejadorEntidades.addDisp(new Dispensador(handler, 32, 1, 32, 32));
         this.manejadorEntidades.addDisp(new Dispensador(handler, 45, 1, 32, 32));
