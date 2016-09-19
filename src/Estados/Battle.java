@@ -56,6 +56,7 @@ public class Battle extends State{
             @Override
             public void onClick() {
                 handler.getManejadorMouse().setUIMananger(null);
+                handler.getMundo().getManejadorEntidades().delMones(m);
                 State.setState(handler.getGame().getGameState());
             }
         }));
@@ -89,6 +90,7 @@ public class Battle extends State{
                 turno = 0;
                 if(m.vida <= 0){
                     handler.getMundo().getManejadorEntidades().delMones(m);
+                    //State.setState(new Inventario(handler));
                     State.setState(handler.getGame().getGameState());
                 }
             }

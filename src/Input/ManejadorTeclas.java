@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 public class ManejadorTeclas implements KeyListener {
 
-    private boolean[] keys;
+    private final boolean[] keys;
     public boolean up;
     public boolean down;
     public boolean left;
@@ -24,14 +24,19 @@ public class ManejadorTeclas implements KeyListener {
         this.space = this.keys[32];
     }
 
+    @Override
     public void keyTyped(KeyEvent e) {
     }
 
+    @Override
     public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() < 0 || e.getKeyCode() > keys.length) return;
         this.keys[e.getExtendedKeyCode()] = true;
     }
 
+    @Override
     public void keyReleased(KeyEvent e) {
+        if(e.getKeyCode() < 0 || e.getKeyCode() > keys.length) return;
         this.keys[e.getExtendedKeyCode()] = false;
     }
 }
