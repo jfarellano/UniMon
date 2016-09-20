@@ -15,7 +15,6 @@ public class Mon extends Estatica {
     public String nombre;
     public BufferedImage text, image;
     public int[] ataques = new int[3];
-    public int[] inventario = new int[15];
 
     public Mon(int id, int vida, String nombre, BufferedImage text, Manejador handler, float x, float y, int a, int b, int c) {
         super(handler, x, y, 32, 32);

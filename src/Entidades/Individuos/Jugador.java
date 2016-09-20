@@ -1,5 +1,6 @@
 package Entidades.Individuos;
 
+import Entidades.Ataque;
 import Entidades.Entidad;
 import Estados.State;
 import gfx.Animacion;
@@ -19,7 +20,7 @@ public class Jugador extends Individuo {
     private Random r = new Random();;
     int last;
     public int atack = 30;
-    public int[] ataquesActivos = new int[3], ataquesLista = new int[30];
+    public int[] ataquesActivos = new int[3], ataquesLista = new int[10];
 
     public Jugador(Manejador handler, float x, float y) {
         super(handler, x, y, 32, 32);
@@ -44,6 +45,28 @@ public class Jugador extends Individuo {
             int j = r.nextInt(11);
             ataquesActivos[i] = j;
             ataquesLista[i] = ataquesActivos[i];
+        }
+        for(int i = 3; i < 10; i++){
+            ataquesLista[i] = 99;
+        }
+    }
+    
+    public void replaceAtaque(int a, int index){
+        ataquesLista[index] = a;
+    }
+    
+    public void replaceAtaqueActivo(int a, int index){
+        ataquesLista[index] = a;
+    }
+    
+    public void addAtaque(int a){
+        boolean sw = true;
+        int i = 0;
+        while(sw){
+            if(ataquesLista[i] == 99){
+                ataquesLista[i] = a;
+                sw = false;
+            }else i++;
         }
     }
 

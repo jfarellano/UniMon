@@ -90,8 +90,7 @@ public class Battle extends State{
                 turno = 0;
                 if(m.vida <= 0){
                     handler.getMundo().getManejadorEntidades().delMones(m);
-                    //State.setState(new Inventario(handler));
-                    State.setState(handler.getGame().getGameState());
+                    State.setState(new TresAtaques(handler, 1, m));
                 }
             }
         }

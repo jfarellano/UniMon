@@ -5,6 +5,9 @@ import Entidades.EntidadEstatica.Mon;
 import Entidades.EntidadEstatica.Tree;
 import Entidades.Individuos.Jugador;
 import Entidades.ManejadorEntidades;
+import Estados.Inventario;
+import Estados.State;
+import Estados.TresAtaques;
 import Utilidad.Utilidad;
 import gfx.Assets;
 import java.awt.Graphics;
@@ -84,6 +87,9 @@ public class Mundo {
             veces = 0;
         }
         veces ++;
+        if(handler.getManejadorTeclas().m){
+            State.setState(new TresAtaques(handler, 0, manejadorEntidades.getPlayer()));
+        }
     }
 
     public void render(Graphics g) {

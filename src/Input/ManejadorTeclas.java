@@ -11,6 +11,7 @@ public class ManejadorTeclas implements KeyListener {
     public boolean left;
     public boolean rigth;
     public boolean space;
+    public boolean m;
 
     public ManejadorTeclas() {
         this.keys = new boolean[225];
@@ -22,6 +23,7 @@ public class ManejadorTeclas implements KeyListener {
         this.left = this.keys[37];
         this.rigth = this.keys[39];
         this.space = this.keys[32];
+        this.m = this.keys[KeyEvent.VK_M];
     }
 
     @Override

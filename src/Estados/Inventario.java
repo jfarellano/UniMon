@@ -1,5 +1,7 @@
 package Estados;
 
+import Entidades.Ataque;
+import Entidades.Entidad;
 import gfx.Assets;
 import java.awt.Graphics;
 import pokemonj.Manejador;
@@ -7,36 +9,60 @@ import pokemonj.UI.Button;
 import pokemonj.UI.ClickListener;
 import pokemonj.UI.UIMananger;
 
-public class Inventario extends State{
+public class Inventario extends State {
 
     private UIMananger uiMananger;
+    private int estado;
+    private Ataque a;
+    private int y;
 
-    public Inventario(Manejador handler) {
+    public Inventario(Manejador handler, int estado, Ataque a) {
         super(handler);
+        this.estado = estado;
+        this.a = a;
+        y = 0;
         uiMananger = new UIMananger(handler);
-        
-        for(int i = 0; i < 10; i++){
-            uiMananger.addObject(new Button(i * 32, 9 * 32, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).nombre + ": "+ handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).magnitud, new ClickListener(){
-                @Override
-                public void onClick() {
-                    handler.getManejadorMouse().setUIMananger(null);
-                    State.setState(handler.getGame().getGameState());
-                }
-            }));
+        handler.getManejadorMouse().setUIMananger(uiMananger);
+        for (int i = 0; i < handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista.length; i++) {
+            if (handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i] != 99) {
+                uiMananger.addObject(new Button(7 * 32, i * 32 + 10, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).magnitud, new ClickListener() {
+                    int index = y;
+                    @Override
+                    public void onClick() {
+                        if(estado == 0){
+                            int m = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(a);
+                            int n = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[index]);
+                            handler.getMundo().getManejadorEntidades().getPlayer().replaceAtaque(n, m);
+                            State.setState(new TresAtaques(handler, 0, handler.getMundo().getManejadorEntidades().getPlayer()));
+                        }else{
+                            int m = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(a);
+                            handler.getMundo().getManejadorEntidades().getPlayer().replaceAtaque(m, index);
+                            State.setState(handler.getGame().getGameState());
+                        }
+                    }
+                }));
+            } else if (estado == 1 && i == 9) {
+                uiMananger.addObject(new Button(7 * 32, i * 32 + 10, 160, 32, Assets.Button, "Agregar ataque ", new ClickListener() {
+                    @Override
+                    public void onClick() {
+                        int m = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(a);
+                        handler.getMundo().getManejadorEntidades().getPlayer().addAtaque(m);
+                        State.setState(handler.getGame().getGameState());
+                    }
+                }));
+            }
+            y++;
         }
     }
 
-    
-    
     @Override
     public void tick() {
-        
+        uiMananger.tick();
     }
 
     @Override
     public void render(Graphics g) {
         uiMananger.render(g);
     }
-
 
 }
