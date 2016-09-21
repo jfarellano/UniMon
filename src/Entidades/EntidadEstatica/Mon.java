@@ -10,19 +10,20 @@ import pokemonj.Manejador;
 
 public class Mon extends Estatica {
     
-    public int vida, id;
+    public int vida, id, tipo;
     public final int VIDA_BASE;
     public String nombre;
     public BufferedImage text, image;
     public int[] ataques = new int[3];
 
-    public Mon(int id, int vida, String nombre, BufferedImage text, Manejador handler, float x, float y, int a, int b, int c) {
+    public Mon(int id, int vida,int tipo ,String nombre, BufferedImage text, Manejador handler, float x, float y, int a, int b, int c) {
         super(handler, x, y, 32, 32);
         this.ataques[0] = a;
         this.ataques[1] = b;
         this.ataques[2] = c;
         this.vida = vida;
         this.id = id;
+        this.tipo = tipo;
         this.nombre = nombre;
         this.text = text;
         this.limites.x = 0;
@@ -66,6 +67,10 @@ public class Mon extends Estatica {
 
     public BufferedImage getText() {
         return text;
+    }
+
+    public int getId() {
+        return id;
     }
     
     

@@ -29,7 +29,6 @@ public final class ManejadorEntidades {
         this.handler = handler;
         this.player = player;
         this.manejadorAtaques = new ManejadorAtaques();
-        manejadorAtaques.cargarAtaques();
         this.mones = new ArrayList<>();
         this.dispensadores = new ArrayList<>();
         this.entidades = new ArrayList();

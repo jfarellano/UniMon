@@ -77,15 +77,24 @@ public class Battle extends State{
         vidaM.setTexto(m.nombre + ": " + m.vida + "/" + m.VIDA_BASE);
         if(turno == 0){
             Ataque a = m.ataq();
-            player.setVida((float)player.getVida() - a.magnitud);
-            ataques.setTexto(m.nombre + " ataca con:" + a.nombre + " -" + a.magnitud);
+            float mag = a.magnitud;
+            int tipoM = m.tipo;
+            int tipoA = a.tipo;
+            System.out.println("Tipo del mon:" + m.tipo + " potencia" + handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[1]);
+            if(handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[tipoM] == tipoA){} mag = (float) (mag * 1.25);
+            if(handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[tipoA] == tipoM){} mag = (float) (mag * 0.6);
+            player.setVida((float)player.getVida() - mag);
+            ataques.setTexto(m.nombre + " ataca con:" + a.nombre + " -" + mag);
             if(player.getVida() <= 0){
                 State.setState(new GameOver(handler));
             }
             turno = 1;
         }else{
             if(qtAtackPlayer != null){
-                m.vida -= qtAtackPlayer.magnitud;
+                float mag = qtAtackPlayer.magnitud;
+                if(handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[(int)qtAtackPlayer.tipo] == m.tipo) mag = (float) (mag * 1.25);
+                if(handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[(int)m.tipo] == qtAtackPlayer.tipo) mag = (float) (mag * 0.6);
+                m.vida -= mag;
                 qtAtackPlayer = null;
                 turno = 0;
                 if(m.vida <= 0){
