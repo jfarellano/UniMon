@@ -9,12 +9,14 @@ public class Button extends UIObject{
     private BufferedImage[] image;
     private ClickListener clicker;
     private String texto;
+    public int id;
 
-    public Button(float x, float y, int width, int height, BufferedImage[] image, String t, ClickListener clicker) {
+    public Button(float x, float y, int width, int height, BufferedImage[] image, String t, int id, ClickListener clicker) {
         super(x, y, width, height);
         this.clicker = clicker;
         this.image = image;
         this.texto = t;
+        this.id = id;
     }
 
     @Override

@@ -1,6 +1,5 @@
 package Estados;
 
-import Estados.State;
 import Mundos.Mundo;
 import java.awt.Graphics;
 import pokemonj.Manejador;
@@ -14,10 +13,12 @@ public class GameState extends State {
         handler.setMundo(this.world);
     }
 
+    @Override
     public void tick() {
         this.world.tick();
     }
 
+    @Override
     public void render(Graphics g) {
         this.world.render(g);
     }

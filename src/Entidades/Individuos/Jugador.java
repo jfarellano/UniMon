@@ -56,7 +56,7 @@ public class Jugador extends Individuo {
     }
     
     public void replaceAtaqueActivo(int a, int index){
-        ataquesLista[index] = a;
+        ataquesActivos[index] = a;
     }
     
     public void addAtaque(int a){

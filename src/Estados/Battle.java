@@ -8,6 +8,8 @@ import gfx.CargarImgs;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
 import pokemonj.UI.ClickListener;
@@ -22,7 +24,7 @@ public class Battle extends State{
     private Random rand;
     private int turno;
     private Ataque qtAtackPlayer;
-    private TextLable vidaT, vidaM;
+    private TextLable vidaT, vidaM, ataques;
     private BufferedImage fondo;
 
     public Battle(Manejador handler, Mon m, Jugador player) {
@@ -34,25 +36,25 @@ public class Battle extends State{
         this.uiMananger = new UIMananger(handler);
         this.turno = rand.nextInt(2);
         handler.getManejadorMouse().setUIMananger(uiMananger);
-        uiMananger.addObject(new Button(8 * 32, 10 * 32, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[0]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[0]).magnitud + " Daño", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32, 10 * 32, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[0]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[0]).magnitud + " Daño", 0,new ClickListener(){
             @Override
             public void onClick() {
                 qtAtackPlayer = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[0]);
             }
         }));
-        uiMananger.addObject(new Button(8 * 32 + 170, 10 * 32, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[1]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[1]).magnitud + " Daño", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32 + 170, 10 * 32, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[1]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[1]).magnitud + " Daño", 0,new ClickListener(){
             @Override
             public void onClick() {
                 qtAtackPlayer = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[1]);
             }
         }));
-        uiMananger.addObject(new Button(8 * 32, 11 * 32 + 20, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[2]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[2]).magnitud + " Daño", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32, 11 * 32 + 20, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[2]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[2]).magnitud + " Daño", 0,new ClickListener(){
             @Override
             public void onClick() {
                 qtAtackPlayer = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(player.ataquesActivos[2]);
             }
         }));
-        uiMananger.addObject(new Button(8 * 32 + 170, 11 * 32 + 20, 160, 32, Assets.Button, "Huir", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32 + 170, 11 * 32 + 20, 160, 32, Assets.Button, "Huir", 0,new ClickListener(){
             @Override
             public void onClick() {
                 handler.getManejadorMouse().setUIMananger(null);
@@ -64,10 +66,13 @@ public class Battle extends State{
         uiMananger.addObject(vidaM);
         vidaT = new TextLable(2, 13, handler.getMundo().getManejadorEntidades().getPlayer().getVida() + "/" + handler.getMundo().getManejadorEntidades().getPlayer().VIDA_BASE, 30);
         uiMananger.addObject(vidaT);
+        ataques = new TextLable(1, 1, "", 20);
+        uiMananger.addObject(ataques);
         
     }
     
     @Override
+    @SuppressWarnings("empty-statement")
     public void tick() {
         uiMananger.tick();
         vidaT.setTexto(handler.getMundo().getManejadorEntidades().getPlayer().getVida() + "/" + handler.getMundo().getManejadorEntidades().getPlayer().VIDA_BASE);
@@ -75,17 +80,14 @@ public class Battle extends State{
         if(turno == 0){
             Ataque a = m.ataq();
             player.setVida((float)player.getVida() - a.magnitud);
-            System.out.println(m.nombre + " ataca con:" + a.nombre);
+            ataques.setTexto(m.nombre + " ataca con:" + a.nombre + " -" + a.magnitud);
             if(player.getVida() <= 0){
                 State.setState(new GameOver(handler));
             }
             turno = 1;
-            System.out.println("Vida Player:"+player.getVida());
         }else{
             if(qtAtackPlayer != null){
                 m.vida -= qtAtackPlayer.magnitud;
-                System.out.println("Turpial ataca con:" + qtAtackPlayer.nombre);
-                System.out.println("Vida mon:"+m.vida);
                 qtAtackPlayer = null;
                 turno = 0;
                 if(m.vida <= 0){

@@ -19,9 +19,10 @@ public class Dispensador extends Estatica{
 
     @Override
     public void tick() {
-        timer ++;
+        if(func == 1)timer ++;
         if(timer == 30 * 90){
             func = 0;
+            timer = 0;
         }
     }
 

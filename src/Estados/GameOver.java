@@ -16,7 +16,7 @@ public class GameOver extends State{
         super(handler);
         uiMananger = new UIMananger(handler);
         handler.getManejadorMouse().setUIMananger(uiMananger);
-        uiMananger.addObject(new Button(8 * 32 + 170, 11 * 32 + 20, 160, 32, Assets.Button, "Se acabo", new ClickListener(){
+        uiMananger.addObject(new Button(8 * 32 + 170, 11 * 32 + 20, 160, 32, Assets.Button, "Se acabo", 0, new ClickListener(){
             @Override
             public void onClick() {
                 System.exit(0);

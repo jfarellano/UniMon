@@ -149,4 +149,10 @@ public class Juego implements Runnable {
     public State getPause() {
         return this.pause;
     }
+
+    public Graphics getG() {
+        return g;
+    }
+    
+    
 }

@@ -5,16 +5,18 @@ import Entidades.EntidadEstatica.Mon;
 import Entidades.EntidadEstatica.Tree;
 import Entidades.Individuos.Jugador;
 import Entidades.ManejadorEntidades;
-import Estados.Inventario;
 import Estados.State;
 import Estados.TresAtaques;
 import Utilidad.Utilidad;
 import gfx.Assets;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.Random;
 import pokemonj.Manejador;
 import pokemonj.Tile.Tile;
+import pokemonj.UI.TextLable;
+import pokemonj.UI.UIMananger;
 
 public class Mundo {
 
@@ -27,6 +29,8 @@ public class Mundo {
     private final Manejador handler;
     private ManejadorEntidades manejadorEntidades;
     private final ArrayList<Mon> mones;
+    private UIMananger uiMananger;
+    private TextLable vida, text;
 
     public Mundo(Manejador handler, String ruta) {
         this.handler = handler;
@@ -47,6 +51,11 @@ public class Mundo {
         RandomSpawn();
         this.manejadorEntidades.getPlayer().setX(this.spwX);
         this.manejadorEntidades.getPlayer().setY(this.spwY);
+        this.uiMananger = new UIMananger(handler);
+        text = new TextLable(1, 13, "VIDA", 20);
+        uiMananger.addObject(text);
+        vida = new TextLable(1, 14, "", 20);
+        uiMananger.addObject(vida);
     }
     
     public Mon monAleatorio(){
@@ -90,6 +99,8 @@ public class Mundo {
         if(handler.getManejadorTeclas().m){
             State.setState(new TresAtaques(handler, 0, manejadorEntidades.getPlayer()));
         }
+        vida.setTexto(manejadorEntidades.getPlayer().getVida() + "/" + manejadorEntidades.getPlayer().VIDA_BASE);
+        uiMananger.tick();
     }
 
     public void render(Graphics g) {
@@ -103,6 +114,10 @@ public class Mundo {
             }
         }
         this.manejadorEntidades.render(g);
+        g.setColor(Color.orange);
+        g.fillRect(32, 32 * 13, 32 * 4, 32 * 2);
+        g.setColor(Color.BLACK);
+        uiMananger.render(g);
     }
 
     public Tile getTile(int x, int y) {

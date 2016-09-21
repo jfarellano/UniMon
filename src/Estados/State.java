@@ -21,5 +21,5 @@ public abstract class State {
 
     public abstract void tick();
 
-    public abstract void render(Graphics var1);
+    public abstract void render(Graphics g);
 }
