@@ -8,8 +8,6 @@ import gfx.CargarImgs;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
 import pokemonj.UI.ClickListener;
@@ -66,7 +64,7 @@ public class Battle extends State{
         uiMananger.addObject(vidaM);
         vidaT = new TextLable(2, 13, handler.getMundo().getManejadorEntidades().getPlayer().getVida() + "/" + handler.getMundo().getManejadorEntidades().getPlayer().VIDA_BASE, 30);
         uiMananger.addObject(vidaT);
-        ataques = new TextLable(1, 1, "", 20);
+        ataques = new TextLable(1, 1, "", 15);
         uiMananger.addObject(ataques);
         
     }

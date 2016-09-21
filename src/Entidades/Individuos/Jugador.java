@@ -51,6 +51,16 @@ public class Jugador extends Individuo {
         }
     }
     
+    public boolean cantAtaq(int a, int index){
+        int total = 0;
+        for(int i = 0; i < 3; i++){
+            if(i != index) total += handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(ataquesActivos[i]).magnitud;
+            else total += handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(a).magnitud;
+        }
+        if(total <= 120) return true;
+        return false;
+    }
+    
     public void replaceAtaque(int a, int index){
         ataquesLista[index] = a;
     }

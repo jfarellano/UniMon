@@ -4,6 +4,7 @@ import Entidades.Ataque;
 import Entidades.Entidad;
 import gfx.Assets;
 import java.awt.Graphics;
+import javax.swing.JOptionPane;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
 import pokemonj.UI.ClickListener;
@@ -14,7 +15,7 @@ public class Inventario extends State {
     private final UIMananger uiMananger;
     private final int estado;
     private final Ataque a;
-    private int index;
+    private final int index;
     private int index2 = 0;
 
     public Inventario(Manejador handler, int estado, Ataque a,int index) {
@@ -33,8 +34,8 @@ public class Inventario extends State {
                     public void onClick() {
                         if(estado == 0){
                             int m = handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[y];
-                            int n = index2;
-                            handler.getMundo().getManejadorEntidades().getPlayer().replaceAtaqueActivo(m, index);
+                            if(handler.getMundo().getManejadorEntidades().getPlayer().cantAtaq(m, index)) handler.getMundo().getManejadorEntidades().getPlayer().replaceAtaqueActivo(m, index);
+                            else JOptionPane.showMessageDialog(null, "Supero el limite de daño (120)");
                             State.setState(new TresAtaques(handler, 0, handler.getMundo().getManejadorEntidades().getPlayer()));
                         }else{
                             int m = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(a);
