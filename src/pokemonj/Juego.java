@@ -75,7 +75,6 @@ public class Juego implements Runnable {
                 delta -= 1.0D;
             }
             if (timer >= 1000000000L) {
-                //System.out.println("Ticks:" + ticks);
                 ticks = 0;
                 timer = 0L;
             }

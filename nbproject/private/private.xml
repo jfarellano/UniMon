@@ -3,27 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Mundos/Mundo.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/Individuos/Individuo.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/res/Mundos/mundoBase.txt</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/res/Mon/monBase.txt</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/UIMananger.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/TextLable.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/MainMenu.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/ManejadorEntidades.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/Entidad.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/Button.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/Inventario.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/gfx/Assets.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Estatica.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Pantalla.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/ManejadorAtaques.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Tree.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Input/ManejadorTeclas.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Mundos/Mundo.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/res/Mundos/mundoBase.txt</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/TextLable.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/Ataque.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/MainMenu.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Juego.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Manejador.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Estados/GameState.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/gfx/CamaraJuego.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/Button.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/gfx/Assets.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Estatica.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/PokemonJ.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/Pantalla.java</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/pokemonj/UI/UIObject.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Mon.java</file>
+            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/res/Mon/atackBase.txt</file>
             <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/Individuos/Jugador.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Entidades/EntidadEstatica/Tree.java</file>
-            <file>file:/D:/Documents/U/Semestre3/Orientada/UniMon0.1/src/Input/ManejadorTeclas.java</file>
         </group>
     </open-files>
 </project-private>

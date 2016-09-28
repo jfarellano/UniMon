@@ -5,7 +5,9 @@ import Entidades.Entidad;
 import Entidades.EntidadEstatica.Mon;
 import Entidades.Individuos.Jugador;
 import gfx.Assets;
+import gfx.CargarImgs;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
 import pokemonj.UI.ClickListener;
@@ -18,9 +20,11 @@ public class TresAtaques extends State{
     private Entidad e;
     private int index;
     private int[] numero;
+    private BufferedImage fondo;
 
     public TresAtaques(Manejador handler, int estado, Entidad e) {
         super(handler);
+        this.fondo = CargarImgs.cargarImagen("/Texturas/TresAtq.png");
         uiMananger = new UIMananger(handler);
         handler.getManejadorMouse().setUIMananger(uiMananger);
         this.index = 0;
@@ -65,6 +69,7 @@ public class TresAtaques extends State{
 
     @Override
     public void render(Graphics g) {
+        g.drawImage(fondo, 0, 0, 620, 480, null);
         uiMananger.render(g);
     }
 

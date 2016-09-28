@@ -79,10 +79,8 @@ public class Battle extends State{
             Ataque a = m.ataq();
             float mag = a.magnitud;
             int tipoM = m.tipo;
-            int tipoA = a.tipo;
-            System.out.println("Tipo del mon:" + m.tipo + " potencia" + handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[1]);
-            if(handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[tipoM] == tipoA){} mag = (float) (mag * 1.25);
-            if(handler.getMundo().getManejadorEntidades().getManejadorAtaques().potencia[tipoA] == tipoM){} mag = (float) (mag * 0.6);
+            if(tipoM == 3){} mag = (float) (mag * 1.3);
+            if(tipoM == 1){} mag = (float) (mag * 0.5);
             player.setVida((float)player.getVida() - mag);
             ataques.setTexto(m.nombre + " ataca con:" + a.nombre + " -" + mag);
             if(player.getVida() <= 0){

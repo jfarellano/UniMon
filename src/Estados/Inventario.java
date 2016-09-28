@@ -3,7 +3,9 @@ package Estados;
 import Entidades.Ataque;
 import Entidades.Entidad;
 import gfx.Assets;
+import gfx.CargarImgs;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 import javax.swing.JOptionPane;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
@@ -17,18 +19,20 @@ public class Inventario extends State {
     private final Ataque a;
     private final int index;
     private int index2 = 0;
+    private BufferedImage fondo;
 
     public Inventario(Manejador handler, int estado, Ataque a,int index) {
         super(handler);
         this.estado = estado;
         this.a = a;
         this.index = index;
+        this.fondo = CargarImgs.cargarImagen("/Texturas/inventario.png");
         uiMananger = new UIMananger(handler);
         handler.getManejadorMouse().setUIMananger(uiMananger);
         for (int i = 0; i < handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista.length; i++) {
             index2 = i;
             if (handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i] != 99) {
-                uiMananger.addObject(new Button(7 * 32, i * 32 + 10, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).magnitud, i,new ClickListener() {
+                uiMananger.addObject(new Button(7 * 32, i * 34 + 50, 160, 32, Assets.Button, handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).nombre + ": " + handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.get(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista[i]).magnitud, i,new ClickListener() {
                     int y = index2;
                     @Override
                     public void onClick() {
@@ -45,7 +49,7 @@ public class Inventario extends State {
                     }
                 }));
             } else if (estado == 1 && i == 9) {
-                uiMananger.addObject(new Button(7 * 32, i * 32 + 10, 160, 32, Assets.Button, "Agregar ataque ", 0,new ClickListener() {
+                uiMananger.addObject(new Button(7 * 32, i * 34 + 10, 160, 32, Assets.Button, "Agregar ataque ", 0,new ClickListener() {
                     @Override
                     public void onClick() {
                         int m = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(a);
@@ -64,6 +68,7 @@ public class Inventario extends State {
 
     @Override
     public void render(Graphics g) {
+        g.drawImage(fondo, 0, 0, 640, 480, null);
         uiMananger.render(g);
     }
 
