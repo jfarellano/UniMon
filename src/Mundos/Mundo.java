@@ -11,6 +11,7 @@ import Utilidad.Utilidad;
 import gfx.Assets;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 import pokemonj.Manejador;
@@ -49,8 +50,10 @@ public class Mundo {
         cargarMundo(ruta);
         manejadorEntidades.cargarArchivoMones();
         RandomSpawn();
-        this.manejadorEntidades.getPlayer().setX(this.spwX);
-        this.manejadorEntidades.getPlayer().setY(this.spwY);
+        if(this.manejadorEntidades.viejo == 0){
+            this.manejadorEntidades.getPlayer().setX(this.spwX);
+            this.manejadorEntidades.getPlayer().setY(this.spwY);
+        }
         this.uiMananger = new UIMananger(handler);
         text = new TextLable(1, 13, "VIDA", 20);
         uiMananger.addObject(text);
@@ -89,7 +92,7 @@ public class Mundo {
         return false;
     }
 
-    public void tick() {
+    public void tick() throws IOException {
         this.manejadorEntidades.tick();
         if (veces == 30*60){
             RandomSpawn();
@@ -135,7 +138,6 @@ public class Mundo {
         String file = Utilidad.loadFileAsString(ruta);
         String[] separados = file.split("\\s+");
         this.width = Utilidad.parseInt(separados[0]);
-        System.out.println(this.width);
         this.height = Utilidad.parseInt(separados[1]);
         this.spwX = Utilidad.parseInt(separados[2]);
         this.spwY = Utilidad.parseInt(separados[3]);

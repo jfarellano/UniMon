@@ -4,10 +4,15 @@ import Entidades.Ataque;
 import Entidades.Entidad;
 import Entidades.EntidadEstatica.Mon;
 import Entidades.Individuos.Jugador;
+import Utilidad.Utilidad;
 import gfx.Assets;
 import gfx.CargarImgs;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
 import pokemonj.UI.ClickListener;
@@ -54,10 +59,27 @@ public class TresAtaques extends State{
                 }));
             }
         }
-        uiMananger.addObject(new Button(7 * 32, 5 * 42 + 190, 160, 32, Assets.Button, "Salir", 0,new ClickListener(){
+        uiMananger.addObject(new Button(4 * 32, 5 * 42 + 190, 160, 32, Assets.Button, "Salir", 0,new ClickListener(){
             @Override
             public void onClick() {
                 State.setState(handler.getGame().getGameState());
+            }
+        }));
+        uiMananger.addObject(new Button(9 * 32, 5 * 42 + 190, 160, 32, Assets.Button, "Guardar", 0,new ClickListener(){
+            @Override
+            public void onClick() {
+                int[] playerInfo = new int[3];
+                playerInfo[0] = (int) handler.getMundo().getManejadorEntidades().getPlayer().getVida();
+                playerInfo[1] = (int) handler.getMundo().getManejadorEntidades().getPlayer().getX();
+                playerInfo[2] = (int) handler.getMundo().getManejadorEntidades().getPlayer().getY();
+                try {
+                    Utilidad.escribirArchivo(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista, 3, "res/Save/Activos.txt");
+                    Utilidad.escribirArchivo(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista, 10, "res/Save/Inventario.txt");
+                    Utilidad.escribirArchivo(playerInfo, 3, "res/Save/Player.txt");
+                } catch (IOException ex) {
+                    Logger.getLogger(TresAtaques.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JOptionPane.showMessageDialog(null, "Juego guardado");
             }
         }));
     }

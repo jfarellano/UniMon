@@ -18,7 +18,8 @@ public class Jugador extends Individuo {
     private final Animacion animIzq;
     private final Animacion animDer;
     private Random r = new Random();;
-    int last;
+    public int last;
+    public int ultimo;
     public int atack = 30;
     public int[] ataquesActivos = new int[3], ataquesLista = new int[10];
 
@@ -28,7 +29,7 @@ public class Jugador extends Individuo {
         this.limites.y = 0;
         this.limites.width = 13;
         this.limites.height = 30;
-        ataquesAleatorios();
+        this.ultimo = 3;
         this.quieto = new BufferedImage[4];
         this.quieto[0] = Assets.Turpial_Der[0];
         this.quieto[1] = Assets.Turpial_Izq[0];
@@ -40,7 +41,7 @@ public class Jugador extends Individuo {
         this.animUp = new Animacion(200, Assets.Turpial_Up);
     }
     
-    private void ataquesAleatorios(){
+    public void ataquesAleatorios(){
         for(int i = 0; i < 3; i++){
             int j = r.nextInt(11);
             ataquesActivos[i] = j;
@@ -75,6 +76,7 @@ public class Jugador extends Individuo {
         while(sw){
             if(ataquesLista[i] == 99){
                 ataquesLista[i] = a;
+                ultimo = i++;
                 sw = false;
             }else i++;
         }
@@ -95,6 +97,24 @@ public class Jugador extends Individuo {
         if (this.handler.getGame().getManejador().rigth) {
             this.xMov = this.velocidad;
         }
+    }
+    
+    public void loadGame(){
+        String s = Utilidad.Utilidad.loadFileAsString("res/Save/Inventario.txt");
+        String[] atq = s.split("\\s+");
+        for(int i = 0; i < 10; i++){
+                ataquesLista[i] = Utilidad.Utilidad.parseInt(atq[i]);
+        }
+        s = Utilidad.Utilidad.loadFileAsString("res/Save/Activos.txt");
+        atq = s.split("\\s+");
+        for(int i = 0; i < 3; i++){
+            ataquesActivos[i] = Utilidad.Utilidad.parseInt(atq[i]);
+        }
+        s = Utilidad.Utilidad.loadFileAsString("res/Save/Player.txt");
+        atq = s.split("\\s+");
+        vida = Utilidad.Utilidad.parseFloat(atq[0]);
+        x = Utilidad.Utilidad.parseFloat(atq[1]);
+        y = Utilidad.Utilidad.parseFloat(atq[2]);
     }
 
     @Override

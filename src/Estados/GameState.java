@@ -2,6 +2,9 @@ package Estados;
 
 import Mundos.Mundo;
 import java.awt.Graphics;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pokemonj.Manejador;
 
 public class GameState extends State {
@@ -15,7 +18,11 @@ public class GameState extends State {
 
     @Override
     public void tick() {
-        this.world.tick();
+        try {
+            this.world.tick();
+        } catch (IOException ex) {
+            Logger.getLogger(GameState.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

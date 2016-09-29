@@ -7,6 +7,7 @@ import gfx.Assets;
 import gfx.CargarImgs;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.Random;
 import pokemonj.Manejador;
 import pokemonj.UI.Button;
@@ -84,6 +85,12 @@ public class Battle extends State{
             player.setVida((float)player.getVida() - mag);
             ataques.setTexto(m.nombre + " ataca con:" + a.nombre + " -" + mag);
             if(player.getVida() <= 0){
+                File f1 = new File("res/Save/Inventario.txt");
+                File f2 = new File("res/Save/Activos.txt");
+                File f3 = new File("res/Save/Player.txt");
+                f1.delete();
+                f2.delete();
+                f3.delete();
                 State.setState(new GameOver(handler));
             }
             turno = 1;

@@ -43,6 +43,7 @@ public class Inventario extends State {
                             State.setState(new TresAtaques(handler, 0, handler.getMundo().getManejadorEntidades().getPlayer()));
                         }else{
                             int m = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(a);
+                            a.cap = true;
                             handler.getMundo().getManejadorEntidades().getPlayer().replaceAtaque(m, y);
                             State.setState(handler.getGame().getGameState());
                         }
@@ -53,6 +54,12 @@ public class Inventario extends State {
                     @Override
                     public void onClick() {
                         int m = handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques.indexOf(a);
+                        a.cap = true;
+                        int sw = 0;
+                        for(Ataque c : handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques){
+                            if(!c.cap) sw = 1;
+                        }
+                        if(sw == 0) JOptionPane.showMessageDialog(null, "Ganaste lograste capturar por lo menos una vez todos los ataques");
                         handler.getMundo().getManejadorEntidades().getPlayer().addAtaque(m);
                         State.setState(handler.getGame().getGameState());
                     }

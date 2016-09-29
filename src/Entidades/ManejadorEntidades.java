@@ -5,6 +5,7 @@ import Entidades.EntidadEstatica.Mon;
 import Entidades.Individuos.Jugador;
 import Utilidad.Utilidad;
 import java.awt.Graphics;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Comparator;
 import pokemonj.Manejador;
@@ -13,11 +14,12 @@ public final class ManejadorEntidades {
     private Manejador handler;
     private Jugador player;
     private ArrayList<Entidad> entidades;
-    private ArrayList<Mon> mones;
-     private ArrayList<Dispensador> dispensadores;
+    private final ArrayList<Mon> mones;
+    private final ArrayList<Dispensador> dispensadores;
     private String[][] archivoMones;
     private int cantMon;
-    private ManejadorAtaques manejadorAtaques;
+    public int viejo;
+    private final ManejadorAtaques manejadorAtaques;
     private final Comparator<Entidad> ordenRender = (a, b) -> {
         if (a.getY() + (float)a.getHeight() < b.getY() + (float)b.getHeight()) {
             return -1;
@@ -28,6 +30,15 @@ public final class ManejadorEntidades {
     public ManejadorEntidades(Manejador handler, Jugador player) {
         this.handler = handler;
         this.player = player;
+        File archivo = new File ("res/Save/Inventario.txt");
+        File archivo2 = new File ("res/Save/Activos.txt");
+        if(!archivo.exists()){
+            viejo = 0;
+            player.ataquesAleatorios();
+        }else{
+            viejo = 1;
+            player.loadGame();
+        }
         this.manejadorAtaques = new ManejadorAtaques();
         this.mones = new ArrayList<>();
         this.dispensadores = new ArrayList<>();

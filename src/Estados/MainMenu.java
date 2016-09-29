@@ -28,4 +28,3 @@ public class MainMenu extends State {
         g.drawImage(this.fondo, 0, 0, null);
     }
 }
-//Ojo aca esta como se implementa un boton en cualquier estado.
