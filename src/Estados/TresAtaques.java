@@ -69,13 +69,22 @@ public class TresAtaques extends State{
             @Override
             public void onClick() {
                 int[] playerInfo = new int[3];
+                int[] atackInfo = new int[15];
                 playerInfo[0] = (int) handler.getMundo().getManejadorEntidades().getPlayer().getVida();
                 playerInfo[1] = (int) handler.getMundo().getManejadorEntidades().getPlayer().getX();
                 playerInfo[2] = (int) handler.getMundo().getManejadorEntidades().getPlayer().getY();
+                int i = 0;
+                for(Ataque c : handler.getMundo().getManejadorEntidades().getManejadorAtaques().Ataques){
+                    if(c.cap)  atackInfo[i] = 1;
+                    else atackInfo[i] = 0;
+                    i++;
+                }
+                
                 try {
                     Utilidad.escribirArchivo(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista, 3, "res/Save/Activos.txt");
                     Utilidad.escribirArchivo(handler.getMundo().getManejadorEntidades().getPlayer().ataquesLista, 10, "res/Save/Inventario.txt");
                     Utilidad.escribirArchivo(playerInfo, 3, "res/Save/Player.txt");
+                    Utilidad.escribirArchivo(atackInfo, 15, "res/Save/Atack.txt");
                 } catch (IOException ex) {
                     Logger.getLogger(TresAtaques.class.getName()).log(Level.SEVERE, null, ex);
                 }

@@ -30,21 +30,24 @@ public final class ManejadorEntidades {
     public ManejadorEntidades(Manejador handler, Jugador player) {
         this.handler = handler;
         this.player = player;
-        File archivo = new File ("res/Save/Inventario.txt");
-        File archivo2 = new File ("res/Save/Activos.txt");
-        if(!archivo.exists()){
-            viejo = 0;
-            player.ataquesAleatorios();
-        }else{
-            viejo = 1;
-            player.loadGame();
-        }
         this.manejadorAtaques = new ManejadorAtaques();
         this.mones = new ArrayList<>();
         this.dispensadores = new ArrayList<>();
         this.entidades = new ArrayList();
         this.addEntidad((Entidad)player);
         cargarArchivoMones();
+        File archivo = new File ("res/Save/Inventario.txt");
+        File archivo2 = new File ("res/Save/Activos.txt");
+        if(!archivo.exists()){
+            viejo = 0;
+            player.ataquesAleatorios();
+            for(int i = 0; i < 3; i++){
+                manejadorAtaques.Ataques.get(player.ataquesActivos[i]).cap = true;
+            }
+        }else{
+            viejo = 1;
+            player.loadGame();
+        }
     }
     
      public void addMones(Mon m){

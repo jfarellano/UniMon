@@ -1,5 +1,6 @@
 package Mundos;
 
+import Entidades.Ataque;
 import Entidades.EntidadEstatica.Dispensador;
 import Entidades.EntidadEstatica.Mon;
 import Entidades.EntidadEstatica.Tree;
@@ -30,13 +31,14 @@ public class Mundo {
     private final Manejador handler;
     private ManejadorEntidades manejadorEntidades;
     private final ArrayList<Mon> mones;
-    private UIMananger uiMananger;
+    private final UIMananger uiMananger;
     private TextLable vida, text;
 
     public Mundo(Manejador handler, String ruta) {
         this.handler = handler;
         this.mones = new ArrayList<>();
         
+
         this.manejadorEntidades = new ManejadorEntidades(handler, new Jugador(handler, this.spwX, this.spwY));
         this.manejadorEntidades.addEntidad(new Tree(handler, 950.0F, 900.0F, 32, 32));
         this.manejadorEntidades.addDisp(new Dispensador(handler, 14, 13, 32, 32));
@@ -48,11 +50,19 @@ public class Mundo {
         this.manejadorEntidades.addDisp(new Dispensador(handler, 22, 34, 32, 32));
 
         cargarMundo(ruta);
-        manejadorEntidades.cargarArchivoMones();
         RandomSpawn();
         if(this.manejadorEntidades.viejo == 0){
             this.manejadorEntidades.getPlayer().setX(this.spwX);
             this.manejadorEntidades.getPlayer().setY(this.spwY);
+        }else{
+            String s = Utilidad.loadFileAsString("res/Save/Atack.txt");
+            String[] atq = s.split("\\s+");
+            int i = 0;
+            for(Ataque c : this.manejadorEntidades.getManejadorAtaques().Ataques){
+                if(Utilidad.parseInt(atq[i]) == 0) c.cap = false;
+                else c.cap = true;
+                i++;
+            }
         }
         this.uiMananger = new UIMananger(handler);
         text = new TextLable(1, 13, "VIDA", 20);
