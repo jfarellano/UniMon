@@ -4,7 +4,11 @@ Este proyecto es para la asignatura Programacion Orientada a Objetos de la Unive
 
 Consiste en un juego 2D tipo RPG.
 
-Estado: Desarrollo, Ya existe cierto nivel de complegidad ya que las batallas estan implementadas, ademas ya hay maneras de regenerar vida usando dispensadores. 
+Historia:Turpial es un nuevo estudiante de la universidad, este se encuentra con diferentes "mones" carcteristicos. Su objetivo es batallarlos para poder capturar todos sus ataques antes de morir en batalla. El puede recargar su vida cierto porcentaje si choca contra un dispensador (Solo se puede usar una vez cada minuto y medio cada dispensador).
+
+Controles: Movimiento (Up, Down, Rigth, Left), Menu(M), Ataques(MouseClick), Intercambio de poderes(M + MouseClick)
+
+Estado: Desarrollo, Listo para la entrega 0.01. 
 
 Autor: Juan Felipe Arellano
 
